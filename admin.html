@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FirstLeads Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0F1E;--surface:#111827;--surface2:#1F2937;--accent:#4F46E5;--text:#F9FAFB;--muted:#9CA3AF;--border:#1F2937;--green:#10B981;--red:#EF4444;--yellow:#F59E0B;--blue:#3B82F6;--purple:#8B5CF6;--gold:#D97706}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-logo{font-size:16px;font-weight:700}
+.topbar-logo span{color:var(--accent)}
+.main{padding:24px;max-width:1400px;margin:0 auto}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:28px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.stat-val{font-size:32px;font-weight:800;color:var(--text)}
+.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border)}
+.tab{padding:10px 20px;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.toolbar{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+input[type="text"],input[type="email"],select,textarea{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;color:var(--text);font-family:inherit;font-size:13px;outline:none}
+input[type="text"]:focus,select:focus{border-color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-sm{padding:4px 10px;font-size:11px}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn-green{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
+.btn-red{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--surface2);padding:10px 14px;text-align:left;font-size:11px;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted)}
+td.bold{color:var(--text);font-weight:600}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-flex;padding:3px 8px;border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.05em}
+.badge-gray{background:rgba(156,163,175,.1);color:var(--muted)}
+.badge-blue{background:rgba(59,130,246,.1);color:var(--blue)}
+.badge-yellow{background:rgba(245,158,11,.1);color:var(--yellow)}
+.badge-green{background:rgba(16,185,129,.1);color:var(--green)}
+.badge-purple{background:rgba(139,92,246,.1);color:var(--purple)}
+.badge-gold{background:rgba(217,119,6,.1);color:var(--gold)}
+.badge-red{background:rgba(239,68,68,.1);color:var(--red)}
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center}
+.modal.open{display:flex}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;width:480px;max-width:95vw;max-height:90vh;overflow-y:auto}
+.modal-box h3{font-size:16px;font-weight:700;margin-bottom:20px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sequence-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+.sequence-card h4{font-size:13px;font-weight:700;margin-bottom:4px}
+.sequence-card p{font-size:12px;color:var(--muted);white-space:pre-wrap}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-logo">First<span>Leads</span> <span style="color:var(--muted);font-weight:400">Admin</span></div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <span id="last-updated" style="color:var(--muted);font-size:12px"></span>
+    <button class="btn btn-outline" onclick="loadAll()">↻ Refresh</button>
+  </div>
+</div>
+
+<div class="main">
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card"><div class="stat-val" id="s-prospects">–</div><div class="stat-label">Prospects totaal</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-replied" style="color:var(--green)">–</div><div class="stat-label">Replies</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-meetings" style="color:var(--purple)">–</div><div class="stat-label">Meetings</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-klanten" style="color:var(--gold)">–</div><div class="stat-label">Klanten</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-leads" style="color:var(--blue)">–</div><div class="stat-label">Leads deze week</div></div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('prospects')">Prospects</div>
+    <div class="tab" onclick="switchTab('leads')">Leads</div>
+    <div class="tab" onclick="switchTab('sequences')">Sequences</div>
+  </div>
+
+  <!-- PROSPECTS TAB -->
+  <div class="tab-content active" id="tab-prospects">
+    <div class="toolbar">
+      <input type="text" id="search-prospects" placeholder="🔍 Zoeken..." oninput="filterProspects()" style="width:220px">
+      <select id="filter-status" onchange="filterProspects()">
+        <option value="">Alle statussen</option>
+        <option value="pending">Pending</option>
+        <option value="linkedin_sent">LinkedIn Verzonden</option>
+        <option value="email_sent">Email Verzonden</option>
+        <option value="replied">Replied</option>
+        <option value="meeting">Meeting</option>
+        <option value="klant">Klant</option>
+        <option value="niet_geinteresseerd">Niet geïnteresseerd</option>
+      </select>
+      <select id="filter-industry" onchange="filterProspects()">
+        <option value="">Alle branches</option>
+        <option>IT / Software</option>
+        <option>Consultancy</option>
+        <option>Recruitment</option>
+        <option>Accountancy</option>
+        <option>Marketing</option>
+        <option>HR</option>
+        <option>Juridisch</option>
+        <option>Bouw</option>
+      </select>
+      <button class="btn btn-primary" onclick="openAddProspect()">+ Prospect toevoegen</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Bedrijf</th><th>Contact</th><th>Email</th><th>Branch</th>
+            <th>Status</th><th>LinkedIn</th><th>Email</th><th>Acties</th>
+          </tr>
+        </thead>
+        <tbody id="prospects-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LEADS TAB -->
+  <div class="tab-content" id="tab-leads">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Naam</th><th>Bedrijf</th><th>Email</th><th>Pakket</th><th>Status</th><th>Datum</th></tr>
+        </thead>
+        <tbody id="leads-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEQUENCES TAB -->
+  <div class="tab-content" id="tab-sequences">
+    <div id="sequences-list"></div>
+  </div>
+</div>
+
+<!-- ADD PROSPECT MODAL -->
+<div class="modal" id="modal-prospect">
+  <div class="modal-box">
+    <h3>Prospect toevoegen</h3>
+    <div class="form-grid">
+      <div class="form-group"><label>Bedrijfsnaam *</label><input type="text" id="p-company"></div>
+      <div class="form-group"><label>Website</label><input type="text" id="p-website" placeholder="https://"></div>
+      <div class="form-group"><label>Branche</label>
+        <select id="p-industry">
+          <option>IT / Software</option><option>Consultancy</option><option>Recruitment</option>
+          <option>Accountancy</option><option>Marketing</option><option>HR</option>
+          <option>Juridisch</option><option>Bouw</option><option>Anders</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Grootte</label>
+        <select id="p-size"><option value="klein">Klein (1-10)</option><option value="middel">Middel (10-50)</option><option value="groot">Groot (50+)</option></select>
+      </div>
+      <div class="form-group"><label>Contactpersoon</label><input type="text" id="p-name"></div>
+      <div class="form-group"><label>Functie</label><input type="text" id="p-title"></div>
+      <div class="form-group"><label>Email</label><input type="email" id="p-email"></div>
+      <div class="form-group"><label>LinkedIn URL</label><input type="text" id="p-linkedin"></div>
+    </div>
+    <div class="form-group"><label>Notities</label><textarea id="p-notes" rows="2" style="width:100%"></textarea></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+      <button class="btn btn-outline" onclick="closeModal('modal-prospect')">Annuleren</button>
+      <button class="btn btn-primary" onclick="saveProspect()">Opslaan</button>
+    </div>
+  </div>
+</div>
+
+<!-- SEND EMAIL MODAL -->
+<div class="modal" id="modal-email">
+  <div class="modal-box">
+    <h3>Email versturen</h3>
+    <div class="form-group"><label>Sequence kiezen</label><select id="email-seq-select" style="width:100%"></select></div>
+    <div id="email-preview" style="background:var(--surface2);border-radius:8px;padding:14px;font-size:12px;color:var(--muted);white-space:pre-wrap;margin:12px 0;min-height:80px"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end">
+      <button class="btn btn-outline" onclick="closeModal('modal-email')">Annuleren</button>
+      <button class="btn btn-primary" onclick="sendEmailToProspect()">Versturen →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = '';
+let adminToken = localStorage.getItem('fl_admin_token');
+let allProspects = [];
+let allSequences = [];
+let currentProspectId = null;
+
+if (!adminToken) {
+  adminToken = prompt('Admin token:');
+  if (adminToken) localStorage.setItem('fl_admin_token', adminToken);
+}
+
+function authHeaders() {
+  return { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' };
+}
+
+async function apiFetch(path, opts = {}) {
+  const r = await fetch(API + path, { headers: authHeaders(), ...opts });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+function statusBadge(s) {
+  const map = {
+    pending: ['gray','Pending'], linkedin_sent: ['blue','LinkedIn ✓'],
+    email_sent: ['yellow','Email ✓'], replied: ['green','Replied'],
+    meeting: ['purple','Meeting'], klant: ['gold','Klant'],
+    niet_geinteresseerd: ['red','Niet int.']
+  };
+  const [color, label] = map[s] || ['gray', s];
+  return `<span class="badge badge-${color}">${label}</span>`;
+}
+
+function fmtDate(d) {
+  if (!d) return '–';
+  return new Date(d).toLocaleDateString('nl-NL', { day:'2-digit', month:'2-digit' });
+}
+
+async function loadStats() {
+  try {
+    const s = await apiFetch('/api/stats');
+    document.getElementById('s-prospects').textContent = s.total_prospects;
+    document.getElementById('s-replied').textContent = s.replied;
+    document.getElementById('s-meetings').textContent = s.meetings;
+    document.getElementById('s-klanten').textContent = s.klanten;
+    document.getElementById('s-leads').textContent = s.leads_this_week;
+    document.getElementById('last-updated').textContent = 'Bijgewerkt: ' + new Date().toLocaleTimeString('nl-NL');
+  } catch(e) {}
+}
+
+async function loadProspects() {
+  try {
+    allProspects = await apiFetch('/api/prospects');
+    renderProspects(allProspects);
+  } catch(e) {}
+}
+
+function renderProspects(list) {
+  const tbody = document.getElementById('prospects-tbody');
+  tbody.innerHTML = list.map(p => `
+    <tr>
+      <td class="bold">${p.company_name || '–'}</td>
+      <td>${p.contact_name || '–'}<br><span style="font-size:11px;color:var(--muted)">${p.contact_title || ''}</span></td>
+      <td>${p.contact_email || '–'}</td>
+      <td>${p.industry || '–'}</td>
+      <td>${statusBadge(p.status)}</td>
+      <td>${fmtDate(p.linkedin_sent_at)}</td>
+      <td>${fmtDate(p.email_sent_at)}</td>
+      <td>
+        <div class="actions">
+          <button class="btn btn-sm btn-outline" onclick="openEmailModal(${p.id})">📧 Email</button>
+          <button class="btn btn-sm btn-green" onclick="markLinkedIn(${p.id})">💼 LinkedIn</button>
+          <button class="btn btn-sm btn-green" onclick="markReply(${p.id})">💬 Reply</button>
+          <select class="btn btn-sm btn-outline" onchange="changeStatus(${p.id}, this.value)" style="padding:4px 6px">
+            <option value="">Status...</option>
+            <option value="pending">Pending</option>
+            <option value="linkedin_sent">LinkedIn Verzonden</option>
+            <option value="email_sent">Email Verzonden</option>
+            <option value="replied">Replied</option>
+            <option value="meeting">Meeting</option>
+            <option value="klant">Klant</option>
+            <option value="niet_geinteresseerd">Niet geïnteresseerd</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+  `).join('') || '<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--muted)">Geen prospects gevonden</td></tr>';
+}
+
+function filterProspects() {
+  const q = document.getElementById('search-prospects').value.toLowerCase();
+  const status = document.getElementById('filter-status').value;
+  const industry = document.getElementById('filter-industry').value;
+  let list = allProspects;
+  if (q) list = list.filter(p => (p.company_name+p.contact_name+p.contact_email).toLowerCase().includes(q));
+  if (status) list = list.filter(p => p.status === status);
+  if (industry) list = list.filter(p => p.industry === industry);
+  renderProspects(list);
+}
+
+async function loadLeads() {
+  try {
+    const leads = await apiFetch('/api/leads');
+    const tbody = document.getElementById('leads-tbody');
+    tbody.innerHTML = leads.map(l => `
+      <tr>
+        <td class="bold">${l.naam || '–'}</td>
+        <td>${l.bedrijf || '–'}</td>
+        <td>${l.email || '–'}</td>
+        <td>${l.pakket_interesse || '–'}</td>
+        <td><span class="badge badge-blue">${l.status}</span></td>
+        <td>${fmtDate(l.created_at)}</td>
+      </tr>
+    `).join('') || '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--muted)">Geen leads</td></tr>';
+  } catch(e) {}
+}
+
+async function loadSequences() {
+  try {
+    allSequences = await apiFetch('/api/outreach-sequences');
+    const div = document.getElementById('sequences-list');
+    div.innerHTML = allSequences.map(s => `
+      <div class="sequence-card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <h4>${s.label}</h4>
+          <span class="badge ${s.channel === 'email' ? 'badge-blue' : 'badge-purple'}">${s.channel}</span>
+          <span class="badge badge-gray">Dag ${s.delay_days}</span>
+        </div>
+        ${s.subject ? `<div style="font-size:12px;font-weight:600;margin-bottom:6px">Onderwerp: ${s.subject}</div>` : ''}
+        <p>${s.body}</p>
+      </div>
+    `).join('');
+  } catch(e) {}
+}
+
+function openAddProspect() { document.getElementById('modal-prospect').classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+async function saveProspect() {
+  const data = {
+    company_name: document.getElementById('p-company').value,
+    website: document.getElementById('p-website').value,
+    industry: document.getElementById('p-industry').value,
+    size: document.getElementById('p-size').value,
+    contact_name: document.getElementById('p-name').value,
+    contact_title: document.getElementById('p-title').value,
+    contact_email: document.getElementById('p-email').value,
+    contact_linkedin: document.getElementById('p-linkedin').value,
+    notes: document.getElementById('p-notes').value,
+  };
+  await apiFetch('/api/prospects', { method: 'POST', body: JSON.stringify(data) });
+  closeModal('modal-prospect');
+  loadProspects();
+  loadStats();
+}
+
+function openEmailModal(id) {
+  currentProspectId = id;
+  const emailSeqs = allSequences.filter(s => s.channel === 'email');
+  document.getElementById('email-seq-select').innerHTML = emailSeqs.map(s => `<option value="${s.id}">${s.label}</option>`).join('');
+  updateEmailPreview();
+  document.getElementById('modal-email').classList.add('open');
+}
+
+function updateEmailPreview() {
+  const sel = document.getElementById('email-seq-select');
+  const seq = allSequences.find(s => s.id == sel.value);
+  document.getElementById('email-preview').textContent = seq ? `Onderwerp: ${seq.subject}\n\n${seq.body}` : '';
+}
+
+document.addEventListener('change', e => { if (e.target.id === 'email-seq-select') updateEmailPreview(); });
+
+async function sendEmailToProspect() {
+  const seqId = document.getElementById('email-seq-select').value;
+  await apiFetch(`/api/outreach-sequences/send/${seqId}`, { method: 'POST', body: JSON.stringify({ prospect_id: currentProspectId }) });
+  closeModal('modal-email');
+  loadProspects();
+}
+
+async function markLinkedIn(id) {
+  const emailSeqs = allSequences.filter(s => s.channel === 'linkedin');
+  if (!emailSeqs.length) { alert('Geen LinkedIn sequences gevonden'); return; }
+  await apiFetch(`/api/linkedin/send/${emailSeqs[0].id}`, { method: 'POST', body: JSON.stringify({ prospect_id: id }) });
+  loadProspects();
+}
+
+async function markReply(id) {
+  const notes = prompt('Notities bij reply (optioneel):') || '';
+  await apiFetch('/api/inbound-reply', { method: 'POST', body: JSON.stringify({ prospect_id: id, notes }) });
+  loadProspects();
+  loadStats();
+}
+
+async function changeStatus(id, status) {
+  if (!status) return;
+  await apiFetch(`/api/prospects/${id}`, { method: 'PATCH', body: JSON.stringify({ status }) });
+  loadProspects();
+  loadStats();
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', ['prospects','leads','sequences'][i] === name));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById(`tab-${name}`).classList.add('active');
+}
+
+async function loadAll() {
+  await Promise.all([loadStats(), loadProspects(), loadLeads(), loadSequences()]);
+}
+
+loadAll();
+</script>
+</body>
+</html>
