@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Leadgeneratie die Resultaten Levert | FirstLeads</title>
+  <meta name="description" content="B2B leadgeneratie via LinkedIn en cold email. ROI-gericht: lage cost per lead, hoge meeting conversie. Ontdek hoe FirstLeads jouw pipeline vult met gekwalificeerde leads.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #0A0F1E; color: #E2E8F0; line-height: 1.6; }
+    a { color: #818CF8; text-decoration: none; }
+    a:hover { color: #fff; }
+    nav { background: rgba(10,15,30,0.95); border-bottom: 1px solid rgba(79,70,229,0.3); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; color: #fff; }
+    .nav-logo span { color: #4F46E5; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #CBD5E1; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { padding: 100px 2rem 80px; text-align: center; background: linear-gradient(135deg, #0A0F1E 0%, #0F172A 50%, #1E1B4B 100%); }
+    .hero-badge { display: inline-block; background: rgba(79,70,229,0.15); border: 1px solid rgba(79,70,229,0.4); color: #818CF8; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.2; max-width: 800px; margin: 0 auto 1.5rem; }
+    .hero h1 span { color: #4F46E5; }
+    .hero p { font-size: 1.2rem; color: #94A3B8; max-width: 600px; margin: 0 auto 2.5rem; }
+    .btn-primary { display: inline-block; background: #4F46E5; color: #fff; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: #4338CA; color: #fff; transform: translateY(-2px); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto; padding: 60px 2rem; }
+    .stat-card { text-align: center; background: rgba(79,70,229,0.08); border: 1px solid rgba(79,70,229,0.2); border-radius: 12px; padding: 2rem; }
+    .stat-number { font-size: 2.5rem; font-weight: 800; color: #4F46E5; }
+    .stat-label { color: #94A3B8; font-size: 0.9rem; margin-top: 0.5rem; }
+    section { padding: 80px 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { color: #4F46E5; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: 1.5rem; }
+    h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+    p { color: #94A3B8; margin-bottom: 1rem; }
+    .alt-bg { background: #0D1526; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+    .channel-card { background: rgba(79,70,229,0.06); border: 1px solid rgba(79,70,229,0.2); border-radius: 16px; padding: 2.5rem; }
+    .channel-card h3 { font-size: 1.4rem; color: #fff; }
+    .channel-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .roi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .roi-card { text-align: center; background: rgba(15,23,42,0.8); border: 1px solid rgba(79,70,229,0.15); border-radius: 12px; padding: 2rem; }
+    .roi-metric { font-size: 2rem; font-weight: 800; color: #4F46E5; margin-bottom: 0.5rem; }
+    .case-study { background: linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(79,70,229,0.05) 100%); border: 1px solid rgba(79,70,229,0.3); border-radius: 16px; padding: 3rem; margin-top: 3rem; }
+    .case-study .badge { display: inline-block; background: rgba(79,70,229,0.2); color: #818CF8; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .case-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    @media (max-width: 600px) { .case-results { grid-template-columns: 1fr; } }
+    .case-result { text-align: center; }
+    .case-result .num { font-size: 2.5rem; font-weight: 800; color: #4F46E5; }
+    .case-result .lbl { color: #94A3B8; font-size: 0.9rem; }
+    .faq-list { max-width: 800px; margin: 3rem auto 0; }
+    .faq-item { border-bottom: 1px solid rgba(79,70,229,0.2); padding: 1.5rem 0; }
+    .faq-item h3 { font-size: 1.05rem; color: #E2E8F0; margin-bottom: 0.75rem; }
+    .faq-item p { margin: 0; }
+    .cta-section { background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%); text-align: center; padding: 80px 2rem; }
+    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-section p { color: #C7D2FE; margin-bottom: 2rem; }
+    footer { background: #060B18; padding: 2rem; text-align: center; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(79,70,229,0.15); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">First<span>Leads</span></div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/b2b-leadgeneratie.html">Diensten</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/admin.html">Admin</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">B2B Leadgeneratie</div>
+  <h1>B2B Leadgeneratie<br><span>die Resultaten Levert</span></h1>
+  <p>Combineer de kracht van LinkedIn en cold email voor een consistente stroom van gekwalificeerde leads en geboekte meetings.</p>
+  <a href="/#contact" class="btn-primary">Gratis strategie gesprek</a>
+</section>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-number">23</div>
+    <div class="stat-label">Meetings in 90 dagen (case study)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">€85</div>
+    <div class="stat-label">Gemiddelde cost per meeting</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">3x</div>
+    <div class="stat-label">Hogere ROI vs. outbound ads</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">90</div>
+    <div class="stat-label">Dagen tot eerste resultaten</div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-label">Wat is B2B Leadgeneratie?</div>
+    <h2>De Sleutel tot Voorspelbare B2B Groei</h2>
+    <div class="two-col">
+      <div>
+        <p>B2B leadgeneratie is het systematisch aantrekken en kwalificeren van potentiële zakelijke klanten. In tegenstelling tot B2C, zijn B2B sales cycli langer, dealbedragen hoger en zijn meerdere beslissers betrokken bij een aankoop.</p>
+        <p>Effectieve B2B leadgeneratie combineert de juiste kanalen, doelgroep-targeting en messaging om een consistente stroom van kwalitatieve leads te creëren die daadwerkelijk converteren naar betalende klanten.</p>
+        <p>Bij FirstLeads focussen we op outbound leadgeneratie via LinkedIn en cold email — de twee meest effectieve kanalen voor directe B2B prospecting. We combineren beide kanalen voor maximale impact en een lagere cost per lead.</p>
+      </div>
+      <div>
+        <ul style="list-style: none; color: #94A3B8;">
+          <li style="padding: 1rem 0; border-bottom: 1px solid rgba(79,70,229,0.15);">
+            <strong style="color:#E2E8F0;">Outbound vs. Inbound</strong><br>
+            Outbound leadgeneratie (actief prospects benaderen) geeft directe controle over pipeline volume. Inbound (SEO, content) duurt maanden. Wij combineren beide voor maximale groei.
+          </li>
+          <li style="padding: 1rem 0; border-bottom: 1px solid rgba(79,70,229,0.15);">
+            <strong style="color:#E2E8F0;">Kwaliteit boven kwantiteit</strong><br>
+            We preferen 10 gekwalificeerde leads boven 100 ongeïnteresseerde contacten. Ons ICP-framework zorgt voor gerichte targeting.
+          </li>
+          <li style="padding: 1rem 0;">
+            <strong style="color:#E2E8F0;">Meetbare ROI</strong><br>
+            Elk aspect van onze campagnes is traceerbaar. Cost per lead, cost per meeting, en uiteindelijk cost per nieuwe klant.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="container">
+    <div class="section-label">Onze Kanalen</div>
+    <h2>LinkedIn + Email: De Winnende Combinatie</h2>
+    <p>Beide kanalen hebben unieke voordelen. Gecombineerd versterken ze elkaar voor maximale bereik en conversie.</p>
+    <div class="two-col" style="margin-top: 2rem;">
+      <div class="channel-card">
+        <div class="channel-icon">💼</div>
+        <h3>LinkedIn Outreach</h3>
+        <p>Directe toegang tot beslissers via het grootste professionele netwerk. Connectieverzoeken, persoonlijke berichten en InMail voor warme, persoonlijke eerste contact.</p>
+        <ul style="list-style: none; color: #94A3B8; margin-top: 1rem;">
+          <li style="margin-bottom: 0.75rem;">→ Gemiddeld 25-40% acceptatiepercentage</li>
+          <li style="margin-bottom: 0.75rem;">→ 15-25% reply rate op berichten</li>
+          <li style="margin-bottom: 0.75rem;">→ Ideaal voor hogere dealwaarden (€10k+)</li>
+          <li>→ Sterke merkopbouw via profiel</li>
+        </ul>
+        <a href="/linkedin-marketing.html" style="display: inline-block; margin-top: 1.5rem; color: #818CF8; font-weight: 600;">Meer over LinkedIn →</a>
+      </div>
+      <div class="channel-card">
+        <div class="channel-icon">📧</div>
+        <h3>Cold Email Outreach</h3>
+        <p>Schaalbare, geautomatiseerde email sequenties voor grote doelgroepen. Hoge deliverability door technische optimalisatie en A/B testing op iedere variabele.</p>
+        <ul style="list-style: none; color: #94A3B8; margin-top: 1rem;">
+          <li style="margin-bottom: 0.75rem;">→ Gemiddeld 3-5% reply rate</li>
+          <li style="margin-bottom: 0.75rem;">→ 20% meeting conversie op replies</li>
+          <li style="margin-bottom: 0.75rem;">→ Schaalbaar tot 1.000+ emails/maand</li>
+          <li>→ Lagere cost per lead dan LinkedIn</li>
+        </ul>
+        <a href="/email-marketing.html" style="display: inline-block; margin-top: 1.5rem; color: #818CF8; font-weight: 600;">Meer over cold email →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">ROI &amp; Kosten</div>
+    <h2>Inzicht in je Cost per Lead &amp; Cost per Meeting</h2>
+    <p>Transparantie over ROI is de kern van onze aanpak. Dit zijn de typische metrics voor onze klanten.</p>
+    <div class="roi-grid">
+      <div class="roi-card">
+        <div class="roi-metric">€35-65</div>
+        <h3>Cost per Lead</h3>
+        <p>Een gekwalificeerde lead die heeft gereageerd op onze outreach. Significant lager dan LinkedIn Ads (€120+) of Google Ads.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-metric">€75-120</div>
+        <h3>Cost per Meeting</h3>
+        <p>Een geboekte meeting met een relevante beslisser. Vergelijk dit met €200-400 via SDR's of leadkoopdiensten.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-metric">5-15x</div>
+        <h3>Typische ROI</h3>
+        <p>Bij een gemiddelde dealwaarde van €15.000 en 15 meetings per kwartaal realiseren klanten 5-15x ROI op hun investering.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-metric">90 dagen</div>
+        <h3>Break-even</h3>
+        <p>De meeste klanten bereiken break-even binnen 90 dagen. Daarna is elke deal pure winst bovenop de investering.</p>
+      </div>
+    </div>
+
+    <div class="case-study">
+      <div class="badge">Case Study</div>
+      <h2>SaaS Bedrijf: 23 Meetings in 90 Dagen</h2>
+      <p>Een Nederlands SaaS-bedrijf in HR-tech wilde hun enterprise sales versnellen. Ze hadden een sterk product maar moeite met het bereiken van de juiste HR-directeuren bij middelgrote bedrijven.</p>
+      <p>We startten een gecombineerde LinkedIn + email campagne gericht op HR-directeuren bij bedrijven van 100-500 medewerkers in Nederland en België. Na een grondige ICP-analyse en het schrijven van gepersonaliseerde templates, gingen we live in week 3.</p>
+      <div class="case-results">
+        <div class="case-result">
+          <div class="num">23</div>
+          <div class="lbl">Geboekte meetings in 90 dagen</div>
+        </div>
+        <div class="case-result">
+          <div class="num">€87</div>
+          <div class="lbl">Cost per meeting</div>
+        </div>
+        <div class="case-result">
+          <div class="num">4</div>
+          <div class="lbl">Gesloten deals in Q1</div>
+        </div>
+      </div>
+      <p style="margin-top: 2rem; font-style: italic; color: #CBD5E1;">"FirstLeads vulde onze pipeline sneller dan we hadden verwacht. De kwaliteit van de leads was hoog — ze begrepen onze ICP perfect en de gepersonaliseerde aanpak maakte een groot verschil."</p>
+      <p style="color: #818CF8; font-weight: 600; margin: 0;">— Sales Director, HR Tech SaaS</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 style="text-align:center;">Veelgestelde Vragen over B2B Leadgeneratie</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Wat is het verschil tussen een lead en een qualified lead?</h3>
+        <p>Een lead is simpelweg iemand die contact heeft opgenomen of gereageerd heeft. Een qualified lead (MQL/SQL) heeft de intentie en mogelijkheid om klant te worden. Wij richten ons op het genereren van Marketing Qualified Leads die voldoen aan je ICP, en kwalificeren ze verder door middel van een discovery call.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Voor welke bedrijven werkt B2B leadgeneratie het best?</h3>
+        <p>B2B leadgeneratie via outreach is het meest effectief voor bedrijven met: een dealwaarde van €5.000 of meer, een duidelijk omschreven doelgroep, een bewezen product/service, en een sales team dat meetings kan opvolgen. Ideaal voor software, consultancy, zakelijke dienstverlening en B2B producten.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Hoeveel leads kan ik verwachten per maand?</h3>
+        <p>Dit hangt af van de doelgroepgrootte, propositie en gekozen kanalen. Typisch genereren we 15-40 gekwalificeerde leads per maand voor onze klanten. In de eerste maand is het volume lager (opstarten en optimaliseren), waarna het stijgt in maand 2-3.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Hoe verhoudt outbound leadgeneratie zich tot SEO/content marketing?</h3>
+        <p>SEO en content marketing zijn uitstekend voor de lange termijn maar kosten 6-12 maanden voor resultaten. Outbound leadgeneratie levert resultaten binnen 4-8 weken. De ideale strategie combineert beide: outbound voor snelle pipeline vulling, inbound voor schaalbaarheid op lange termijn.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wat heb ik nodig om te starten met FirstLeads?</h3>
+        <p>Voor een succesvolle start hebben we nodig: een duidelijk omschreven doelgroep (ICP), informatie over je propositie en key benefits, en een sales proces voor opvolging van leads. Wij verzorgen de rest: research, copywriting, technische setup en uitvoering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Klaar voor Voorspelbare B2B Groei?</h2>
+    <p>Plan een gratis strategiegesprek en ontdek hoeveel leads en meetings we voor jouw bedrijf kunnen genereren.</p>
+    <a href="/#contact" class="btn-primary">Gratis gesprek inplannen</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 FirstLeads — B2B Leadgeneratie | <a href="/">Home</a> | <a href="/blog/">Blog</a></p>
+</footer>
+
+</body>
+</html>
