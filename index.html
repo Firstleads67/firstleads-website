@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FirstLeads.nl — Meer B2B Klanten via LinkedIn en Email</title>
+<meta name="description" content="FirstLeads genereert 8-15 gekwalificeerde B2B afspraken per maand via LinkedIn en email. Done-for-you. Geen resultaat = geen kosten.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0F1E;--surface:#111827;--surface2:#1F2937;--accent:#4F46E5;--accent2:#6366F1;--text:#F9FAFB;--muted:#9CA3AF;--border:#1F2937;--green:#10B981}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:20px;font-weight:800;color:var(--text)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{color:var(--muted);font-size:14px;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn-lg{padding:14px 28px;font-size:15px}
+
+/* HERO */
+.hero{padding:100px 0 80px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,70,229,.1);border:1px solid rgba(79,70,229,.3);color:var(--accent2);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;margin-bottom:28px}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:var(--muted);font-size:18px;max-width:580px;margin:0 auto 36px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.trust-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.trust-item{color:var(--muted);font-size:13px;display:flex;align-items:center;gap:6px}
+.trust-item span{color:var(--green)}
+
+/* SECTION */
+section{padding:80px 0}
+.section-label{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(24px,4vw,40px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.section-sub{color:var(--muted);font-size:16px;max-width:560px}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px 28px;position:relative}
+.step-num{font-size:48px;font-weight:800;color:rgba(79,70,229,.2);line-height:1;margin-bottom:16px}
+.step h3{font-size:18px;font-weight:700;margin-bottom:10px}
+.step p{color:var(--muted);font-size:14px}
+.step-connector{display:none}
+
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .2s}
+.service-card:hover{border-color:var(--accent)}
+.service-icon{font-size:32px;margin-bottom:16px}
+.service-card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.service-card p{color:var(--muted);font-size:14px}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--surface);border-radius:24px;padding:60px 48px;margin-top:0}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.testimonial{background:var(--surface2);border-radius:12px;padding:24px}
+.stars{color:#FBBF24;font-size:14px;margin-bottom:12px}
+.testimonial p{color:var(--muted);font-size:14px;font-style:italic;margin-bottom:16px}
+.testimonial-author{font-size:13px;font-weight:600}
+.testimonial-company{font-size:12px;color:var(--muted)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative}
+.price-card.featured{border-color:var(--accent);background:rgba(79,70,229,.05)}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;white-space:nowrap;letter-spacing:.05em}
+.price-name{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:8px}
+.price-amount{font-size:36px;font-weight:800;margin-bottom:4px}
+.price-amount span{font-size:14px;font-weight:400;color:var(--muted)}
+.price-desc{color:var(--muted);font-size:13px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.price-features{list-style:none}
+.price-features li{font-size:13px;color:var(--muted);padding:6px 0;display:flex;gap:8px}
+.price-features li::before{content:"✓";color:var(--green);font-weight:700;flex-shrink:0}
+.price-cta{margin-top:24px}
+.price-cta .btn{width:100%;justify-content:center}
+
+/* CONTACT FORM */
+.contact-section{background:var(--surface);border-radius:24px;padding:60px 48px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+.contact-info h3{font-size:22px;font-weight:700;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:24px}
+.contact-detail{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:14px}
+.contact-detail span:first-child{font-size:20px}
+form{display:flex;flex-direction:column;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+label{font-size:13px;font-weight:600;color:var(--muted)}
+input,textarea,select{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;transition:border-color .15s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+textarea{resize:vertical;min-height:100px}
+select option{background:var(--bg)}
+.form-success{display:none;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:var(--green);padding:16px;border-radius:8px;text-align:center;font-weight:600}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:40px 0;margin-top:80px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{font-size:18px;font-weight:800}
+.footer-logo span{color:var(--accent)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:var(--muted);font-size:13px;transition:color .15s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{color:var(--muted);font-size:12px}
+
+@media(max-width:768px){
+  .steps,.services,.testimonials-grid,.pricing-grid,.contact-grid,.form-row{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .testimonials,.contact-section{padding:40px 24px}
+  .hero{padding:60px 0 40px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-logo">First<span>Leads</span>.nl</div>
+      <div class="nav-links">
+        <a href="#diensten">Diensten</a>
+        <a href="#resultaten">Resultaten</a>
+        <a href="#prijzen">Prijzen</a>
+        <a href="#contact" class="btn btn-primary">Gratis gesprek →</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="badge">🚀 47+ tevreden klanten in Nederland</div>
+    <h1>Meer B2B klanten via<br><span>LinkedIn en email</span></h1>
+    <p>Wij vinden de prospects, schrijven de berichten en plannen de afspraken. Jij hoeft alleen te verschijnen en te closen.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary btn-lg">Gratis strategiegesprek →</a>
+      <a href="#hoe-het-werkt" class="btn btn-outline btn-lg">Hoe het werkt</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><span>✓</span> Geen resultaat = geen kosten</div>
+      <div class="trust-item"><span>✓</span> Binnen 14 dagen live</div>
+      <div class="trust-item"><span>✓</span> 100% done-for-you</div>
+      <div class="trust-item"><span>✓</span> Gemiddeld 12 afspraken/maand</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOE HET WERKT -->
+<section id="hoe-het-werkt">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Werkwijze</div>
+      <h2 class="section-title">In 3 stappen naar meer klanten</h2>
+      <p class="section-sub">Wij nemen het volledige salesproces uit handen. Van prospect tot afspraak.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Wij vinden jouw ideale prospects</h3>
+        <p>We bouwen een lijst van beslissers die perfect passen bij jouw ideale klantprofiel. LinkedIn, Apollo, handmatig onderzoek — wij doen het allemaal.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Wij schrijven en versturen de berichten</h3>
+        <p>Gepersonaliseerde LinkedIn connectieverzoeken, follow-ups en cold emails. Geen generieke templates — elk bericht is specifiek voor de ontvanger.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Jij voert de gesprekken en sluit deals</h3>
+        <p>Wij leveren alleen gekwalificeerde gesprekken. Geen tijdverspilling met mensen die niet passen. Jij clost, wij vullen de agenda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section id="diensten">
+  <div class="container">
+    <div class="section-label">Diensten</div>
+    <h2 class="section-title">Wat wij voor je doen</h2>
+    <div class="services">
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h3>LinkedIn Outreach</h3>
+        <p>Gepersonaliseerde connectieverzoeken en berichtensequenties naar jouw ideale klanten. Wij schrijven, versturen en optimaliseren.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✉️</div>
+        <h3>Email Sequences</h3>
+        <p>4-staps cold email campagnes met bewezen copy. Gemiddeld 12% reply rate versus 2-3% industriestandaard.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Lead Research</h3>
+        <p>Handmatig samengestelde prospectlijsten op basis van jouw ideale klantprofiel. Alleen beslissers die écht passen.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>CRM & Rapportage</h3>
+        <p>Wekelijkse rapportage over campagneresultaten. Volledig inzicht in wat werkt en wat beter kan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTATEN -->
+<section id="resultaten">
+  <div class="container">
+    <div class="testimonials">
+      <div class="text-center">
+        <div class="section-label">Resultaten</div>
+        <h2 class="section-title">Wat onze klanten zeggen</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"5 nieuwe klanten in 60 dagen dankzij Marvin en zijn team. Super tevreden over onze samenwerking."</p>
+          <div class="testimonial-author">Gianna</div>
+          <div class="testimonial-company">Marketing Manager — Emarkable</div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"Van 3 naar 11 nieuwe klanten per maand. Onze omzet is in 4 maanden verdrievoudigd. Beste investering dit jaar."</p>
+          <div class="testimonial-author">Wolter Last</div>
+          <div class="testimonial-company">Directeur — Hint Global</div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"In week 1 al 3 reacties van beslissers. Na 30 dagen: 7 afspraken ingepland. Alles op autopilot."</p>
+          <div class="testimonial-author">Serge</div>
+          <div class="testimonial-company">CEO — Limesoft</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIJZEN -->
+<section id="prijzen">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Prijzen</div>
+      <h2 class="section-title">Transparante prijzen, geen verrassingen</h2>
+      <p class="section-sub">Geen resultaat in de eerste 30 dagen? Dan werken wij gratis door totdat we leveren.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-amount">€497<span>/maand</span></div>
+        <div class="price-desc">Voor bedrijven die willen starten met geautomatiseerde outreach.</div>
+        <ul class="price-features">
+          <li>100 LinkedIn connecties per week</li>
+          <li>50 cold emails per week</li>
+          <li>2-staps email sequence</li>
+          <li>Maandelijkse prospectlijst</li>
+          <li>Wekelijkse rapportage</li>
+        </ul>
+        <div class="price-cta"><a href="#contact" class="btn btn-outline">Starten →</a></div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">MEEST GEKOZEN</div>
+        <div class="price-name">Growth</div>
+        <div class="price-amount">€997<span>/maand</span></div>
+        <div class="price-desc">Voor bedrijven die serieus willen schalen met B2B sales.</div>
+        <ul class="price-features">
+          <li>300 LinkedIn connecties per week</li>
+          <li>150 cold emails per week</li>
+          <li>4-staps email sequence + copywriting</li>
+          <li>Garantie: geen resultaat = geen kosten</li>
+          <li>A/B testing op berichten</li>
+          <li>Bi-weekly strategy call</li>
+        </ul>
+        <div class="price-cta"><a href="#contact" class="btn btn-primary">Gratis gesprek →</a></div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Scale</div>
+        <div class="price-amount">€1.997<span>/maand</span></div>
+        <div class="price-desc">Full-service voor bedrijven die maximale groei willen.</div>
+        <ul class="price-features">
+          <li>500 LinkedIn connecties per week</li>
+          <li>300 cold emails per week</li>
+          <li>Full management + dedicated manager</li>
+          <li>Garantie: geen resultaat = geen kosten</li>
+          <li>CRM inrichting & training</li>
+          <li>Wekelijkse strategy call</li>
+          <li>Content creatie LinkedIn profiel</li>
+        </ul>
+        <div class="price-cta"><a href="#contact" class="btn btn-outline">Starten →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-section">
+      <div class="text-center">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Plan een gratis strategiegesprek</h2>
+        <p class="section-sub">30 minuten. Geen verplichtingen. Wij laten zien hoe het werkt voor jouw branche.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Directe lijn</h3>
+          <p>Liever meteen bellen of mailen? Dat kan ook.</p>
+          <div class="contact-detail"><span>📞</span> <span>06 40997278</span></div>
+          <div class="contact-detail"><span>✉️</span> <span>marvin@firstleads.nl</span></div>
+          <div class="contact-detail"><span>📍</span> <span>Nederland</span></div>
+          <br>
+          <p style="color:var(--muted);font-size:13px">✓ Reactie binnen 2 uur op werkdagen<br>✓ Geen sales pitch — alleen eerlijk advies</p>
+        </div>
+        <form id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Naam *</label>
+              <input type="text" name="naam" required placeholder="Jouw naam">
+            </div>
+            <div class="form-group">
+              <label>Bedrijf *</label>
+              <input type="text" name="bedrijf" required placeholder="Bedrijfsnaam">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" required placeholder="jouw@email.nl">
+            </div>
+            <div class="form-group">
+              <label>Telefoon</label>
+              <input type="tel" name="telefoon" placeholder="06 12345678">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Pakket interesse</label>
+            <select name="pakket_interesse">
+              <option value="">Nog niet zeker</option>
+              <option value="Starter €497">Starter — €497/maand</option>
+              <option value="Growth €997">Growth — €997/maand</option>
+              <option value="Scale €1997">Scale — €1.997/maand</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Wat is jullie grootste salesprobleem? *</label>
+            <textarea name="probleem" required placeholder="Beschrijf kort waar jullie tegenaan lopen..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="justify-content:center">Verstuur aanvraag →</button>
+          <div class="form-success" id="form-success">✓ Bedankt! Wij nemen binnen 2 uur contact op.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">First<span>Leads</span>.nl</div>
+      <div class="footer-links">
+        <a href="/linkedin-marketing.html">LinkedIn Marketing</a>
+        <a href="/email-marketing.html">Email Marketing</a>
+        <a href="/b2b-leadgeneratie.html">B2B Leadgeneratie</a>
+        <a href="/blog/">Blog</a>
+      </div>
+      <div class="footer-copy">© 2026 FirstLeads.nl — Marvin Oosterhof — marvin@firstleads.nl — 06 40997278</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Versturen...';
+  btn.disabled = true;
+  const data = Object.fromEntries(new FormData(e.target));
+  try {
+    await fetch('/api/submit', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    document.getElementById('form-success').style.display = 'block';
+    e.target.reset();
+  } catch(err) {
+    alert('Er ging iets mis. Bel ons op 06 40997278.');
+  }
+  btn.textContent = 'Verstuur aanvraag →';
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>
