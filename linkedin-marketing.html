@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Marketing voor B2B Bedrijven | FirstLeads</title>
+  <meta name="description" content="LinkedIn marketing voor B2B bedrijven die willen groeien. Bereik beslissers, genereer kwalitatieve leads en versterk je merkautoriteit met FirstLeads.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #0A0F1E; color: #E2E8F0; line-height: 1.6; }
+    a { color: #818CF8; text-decoration: none; }
+    a:hover { color: #fff; }
+
+    /* NAV */
+    nav { background: rgba(10,15,30,0.95); border-bottom: 1px solid rgba(79,70,229,0.3); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; color: #fff; }
+    .nav-logo span { color: #4F46E5; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #CBD5E1; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+
+    /* HERO */
+    .hero { padding: 100px 2rem 80px; text-align: center; background: linear-gradient(135deg, #0A0F1E 0%, #0F172A 50%, #1E1B4B 100%); }
+    .hero-badge { display: inline-block; background: rgba(79,70,229,0.15); border: 1px solid rgba(79,70,229,0.4); color: #818CF8; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.2; max-width: 800px; margin: 0 auto 1.5rem; }
+    .hero h1 span { color: #4F46E5; }
+    .hero p { font-size: 1.2rem; color: #94A3B8; max-width: 600px; margin: 0 auto 2.5rem; }
+    .btn-primary { display: inline-block; background: #4F46E5; color: #fff; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: #4338CA; color: #fff; transform: translateY(-2px); }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto; padding: 60px 2rem; }
+    .stat-card { text-align: center; background: rgba(79,70,229,0.08); border: 1px solid rgba(79,70,229,0.2); border-radius: 12px; padding: 2rem; }
+    .stat-number { font-size: 2.5rem; font-weight: 800; color: #4F46E5; }
+    .stat-label { color: #94A3B8; font-size: 0.9rem; margin-top: 0.5rem; }
+
+    /* SECTIONS */
+    section { padding: 80px 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { color: #4F46E5; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: 1.5rem; }
+    h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+    p { color: #94A3B8; margin-bottom: 1rem; }
+    .alt-bg { background: #0D1526; }
+
+    /* BENEFITS GRID */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .benefit-card { background: rgba(79,70,229,0.06); border: 1px solid rgba(79,70,229,0.2); border-radius: 12px; padding: 2rem; }
+    .benefit-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+    /* PROCESS */
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .step { text-align: center; padding: 2rem; background: rgba(15,23,42,0.8); border: 1px solid rgba(79,70,229,0.15); border-radius: 12px; }
+    .step-num { display: inline-block; background: #4F46E5; color: #fff; width: 40px; height: 40px; border-radius: 50%; line-height: 40px; font-weight: 800; margin-bottom: 1rem; }
+
+    /* TWO-COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* FAQ */
+    .faq-list { max-width: 800px; margin: 3rem auto 0; }
+    .faq-item { border-bottom: 1px solid rgba(79,70,229,0.2); padding: 1.5rem 0; }
+    .faq-item h3 { font-size: 1.05rem; color: #E2E8F0; margin-bottom: 0.75rem; }
+    .faq-item p { margin: 0; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%); text-align: center; padding: 80px 2rem; }
+    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-section p { color: #C7D2FE; margin-bottom: 2rem; }
+
+    /* FOOTER */
+    footer { background: #060B18; padding: 2rem; text-align: center; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(79,70,229,0.15); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">First<span>Leads</span></div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/b2b-leadgeneratie.html">Diensten</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/admin.html">Admin</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">LinkedIn Marketing B2B</div>
+  <h1>LinkedIn Marketing voor B2B Bedrijven<br><span>die Willen Groeien</span></h1>
+  <p>Bereik de juiste beslissers op het juiste moment. FirstLeads zet LinkedIn in als krachtig kanaal voor meetbare B2B groei.</p>
+  <a href="/#contact" class="btn-primary">Gratis strategie gesprek</a>
+</section>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-number">900M+</div>
+    <div class="stat-label">LinkedIn gebruikers wereldwijd</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">80%</div>
+    <div class="stat-label">B2B leads via LinkedIn</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">4x</div>
+    <div class="stat-label">Hogere conversie vs. andere kanalen</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">65%</div>
+    <div class="stat-label">Beslissers actief op LinkedIn</div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Wat is LinkedIn Marketing B2B?</div>
+        <h2>Het krachtigste platform voor B2B professionals</h2>
+        <p>LinkedIn is het grootste professionele netwerk ter wereld en het meest effectieve kanaal voor B2B marketing. In tegenstelling tot andere sociale media, zijn LinkedIn gebruikers bewust op zoek naar zakelijke oplossingen en kansen.</p>
+        <p>B2B LinkedIn marketing omvat alle activiteiten om via LinkedIn nieuwe klanten, partners en leads te vinden. Van profiel optimalisatie tot gerichte outreach en thought leadership content — het platform biedt ongekende mogelijkheden om de juiste mensen te bereiken.</p>
+        <p>Bij FirstLeads combineren we data-gedreven targeting met gepersonaliseerde communicatie om consistente resultaten te leveren voor onze klanten.</p>
+      </div>
+      <div style="background: rgba(79,70,229,0.08); border: 1px solid rgba(79,70,229,0.2); border-radius: 16px; padding: 2.5rem;">
+        <h3 style="color:#fff; margin-bottom: 1.5rem;">Waarom LinkedIn voor B2B?</h3>
+        <ul style="list-style: none; color: #94A3B8;">
+          <li style="margin-bottom: 1rem;">✓ &nbsp;Directe toegang tot C-level beslissers</li>
+          <li style="margin-bottom: 1rem;">✓ &nbsp;Professionele context = hogere intentie</li>
+          <li style="margin-bottom: 1rem;">✓ &nbsp;Geavanceerde targeting op functie, sector en bedrijf</li>
+          <li style="margin-bottom: 1rem;">✓ &nbsp;Bouw duurzame zakelijke relaties</li>
+          <li style="margin-bottom: 1rem;">✓ &nbsp;Meetbare ROI per campagne</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="container">
+    <div class="section-label">Voordelen</div>
+    <h2>Waarom LinkedIn Marketing Werkt voor B2B</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <h3>Gerichte Bereik</h3>
+        <p>Filter op functietitel, bedrijfsgrootte, sector en locatie. Bereik precies de beslissers die relevant zijn voor jouw aanbod — zonder budget te verspillen aan irrelevante doelgroepen.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">👔</div>
+        <h3>Directe Toegang tot Beslissers</h3>
+        <p>80% van B2B leads komt via LinkedIn. CEO's, directeuren en managers zijn dagelijks actief op het platform. Wij bereiken ze met de juiste boodschap op het juiste moment.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏆</div>
+        <h3>Merkautoriteit Opbouwen</h3>
+        <p>Positioneer jezelf als thought leader in jouw niche. Consistent waardevolle content delen vergroot je geloofwaardigheid en zorgt ervoor dat prospects al warm zijn voordat je contact opneemt.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📊</div>
+        <h3>Meetbare Resultaten</h3>
+        <p>Geen vaag "brand awareness". Wij meten aantal verzonden berichten, acceptatieratio's, antwoordpercentages en geboekte meetings. Volledige transparantie over je investering.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🤝</div>
+        <h3>Persoonlijke Connecties</h3>
+        <p>LinkedIn outreach bouwt echte relaties. Een persoonlijk bericht voelt anders dan een generieke advertentie — en converteert significant beter in een B2B sales context.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Snelle Time-to-Market</h3>
+        <p>Binnen 2 weken na opstart zijn je eerste campagnes live. Geen maanden lange SEO trajecten — directe bereik van je doelgroep vanaf dag één.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Onze Aanpak</div>
+    <h2>Hoe FirstLeads LinkedIn Outreach Uitvoert</h2>
+    <p>Wij hanteren een bewezen 4-staps proces dat consistent resultaten levert voor B2B bedrijven in Nederland.</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Profiel Optimalisatie</h3>
+        <p>Je LinkedIn profiel is je eerste indruk. Wij optimaliseren je headline, samenvatting en ervaringen zodat prospects meteen begrijpen wat je doet en waarom ze met je moeten praten.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Doelgroep Research</h3>
+        <p>We identificeren je ideale klantprofiel en bouwen lijsten van relevante prospects. Targeting op functie, sector, bedrijfsgrootte en locatie zorgt voor maximale relevantie.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Gepersonaliseerde Outreach</h3>
+        <p>Geen copy-paste spam. Elk bericht is gepersonaliseerd op de prospect. We testen meerdere varianten en optimaliseren continu op basis van data.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Follow-up & Conversie</h3>
+        <p>Een strategische follow-up sequentie houdt gesprekken gaande. Warme leads worden overgedragen aan jouw sales team voor de afronding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 style="text-align:center;">Veelgestelde Vragen over LinkedIn Marketing B2B</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Hoeveel connectieverzoeken kan ik per week versturen op LinkedIn?</h3>
+        <p>LinkedIn heeft limieten voor connectieverzoeken om spam te voorkomen. Doorgaans zijn dit 100-150 verzoeken per week voor een gewoon account. Wij werken binnen deze limieten en hanteren een warme aanpak zodat je acceptatiepercentage hoog blijft — gemiddeld 25-40%.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Heb ik LinkedIn Premium of Sales Navigator nodig?</h3>
+        <p>Sales Navigator is sterk aanbevolen voor serieuze B2B outreach. Het biedt geavanceerde zoekfilters, uitgebreidere zoekopdrachten en betere insights over prospects. De kosten wegen ruimschoots op tegen de extra meetingkansen die het genereert.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Hoe lang duurt het voor ik resultaten zie van LinkedIn marketing?</h3>
+        <p>De eerste reacties komen doorgaans binnen 1-2 weken na de start. Consistente resultaten (geboekte meetings) zijn merkbaar na 4-6 weken. Het platform beloont consistentie — hoe langer je actief bent, hoe beter de resultaten.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Werkt LinkedIn outreach voor elk type B2B bedrijf?</h3>
+        <p>LinkedIn is met name effectief voor B2B bedrijven met een gemiddelde dealwaarde van €5.000 of meer, complexe verkoopcycli en een duidelijk omschreven doelgroep. Denk aan software, consultancy, marketing, finance en zakelijke dienstverlening.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wat is het verschil tussen LinkedIn outreach en LinkedIn advertenties?</h3>
+        <p>Outreach is directe, persoonlijke communicatie via berichten — menselijk en conversiegericht. Advertenties zijn betaald bereik voor grotere doelgroepen, meer geschikt voor brand awareness. Wij combineren beide voor maximale impact, maar outreach levert typisch de hoogste ROI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Klaar om te Groeien via LinkedIn?</h2>
+    <p>Plan een gratis strategiegesprek en ontdek hoe LinkedIn marketing jouw B2B sales kan versnellen.</p>
+    <a href="/#contact" class="btn-primary">Gratis gesprek inplannen</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 FirstLeads — B2B Leadgeneratie &amp; LinkedIn Marketing | <a href="/">Home</a> | <a href="/blog/">Blog</a></p>
+</footer>
+
+</body>
+</html>
