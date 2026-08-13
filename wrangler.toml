@@ -5,4 +5,5 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "firstleads-crm"
-database_id = "placeholder-replace-in-cloudflare"
+database_id = "0e65a67e-7f1b-48dc-801d-482592643149"
+
